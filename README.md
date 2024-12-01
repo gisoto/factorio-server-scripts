@@ -2,10 +2,13 @@
 
 ## Crontab setup
 Run update-factorio script on a schedule.
+
+Open crontab editor:
 ````shell
-$ crontab -e
+crontab -e
 ````
 Paste into editor:
+(update timings if needed)
 ````shell 
 # run update-factorio script every 5 min, between 0800-2355
 */5 8-23 * * * ~/factorio/update-factorio.sh
