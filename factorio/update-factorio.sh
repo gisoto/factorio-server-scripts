@@ -16,7 +16,7 @@ exec >>"$script_dir"/logs/update-factorio."$(date --iso-8601)".log 2>&1
 printf "\n\n=========================\n"
 date --iso-8601=seconds
 
-#pull latest docker image
+# pull latest docker image
 echo "Pulling the latest image version."
 docker compose --file "$script_dir"/docker-compose.yml pull --quiet
 new_image_id=$(docker inspect --format "{{.Id}}" factoriotools/factorio:stable)
@@ -40,6 +40,7 @@ fi
 echo "Container $container_name is running."
 container_image_id=$(docker inspect --format "{{.Image}}" "$container_name")
 
+# skip update if the server is not empty
 echo "Checking player count on the server before updating."
 players_online=$(docker exec factorio rcon /players o)
 player_count=$(($(echo "$players_online" | wc --lines) - 1))
@@ -50,10 +51,13 @@ if [ $player_count -gt 0 ]; then
   exit 0
 fi
 
+# stop if there's no new update
 if [ "$new_image_id" = "$container_image_id" ]; then
   echo "Container $container_name is already running the latest image version."
   exit 0
 fi
+
+# restart server with latest update
 echo "Recreating container $container_name with the latest image version."
 docker compose --file "$script_dir"/docker-compose.yml down;
 docker compose --file "$script_dir"/docker-compose.yml up --detach;
