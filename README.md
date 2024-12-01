@@ -14,6 +14,15 @@ Paste into editor:
 0 0 * * * find ~/factorio/logs -type f -mtime +7 -exec rm {} \;
 ````
 
+## Bash aliases setup
+Add aliases in `.bashrc`, or in a config file sourced by `.bashrc`, like `.bash_aliases`.
+
+Paste into editor:
+(update script location if needed)
+````shell
+alias update-factorio='~/factorio/update-factorio.sh'
+````
+
 ## Resources
 - https://github.com/factoriotools/factorio-docker
 - https://crontab.guru/
