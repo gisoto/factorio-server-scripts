@@ -1,4 +1,5 @@
 # factorio-server-scripts
+Setup & scripts assume [factorio/](factorio) directory is cloned into user home directory.
 
 ## Crontab setup
 Run update-factorio script on a schedule.
