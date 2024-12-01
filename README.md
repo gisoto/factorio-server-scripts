@@ -2,7 +2,7 @@
 Setup & scripts assume [factorio/](factorio) directory is cloned into user home directory.
 
 ## Crontab setup
-Run update-factorio script on a schedule.
+Run [update-factorio.sh](factorio/update-factorio.sh) script on a schedule.
 
 Open crontab editor:
 ````shell
@@ -19,7 +19,7 @@ Paste into editor:
 ````
 
 ## Bash aliases setup
-Add aliases in `.bashrc`, or in a config file sourced by `.bashrc`, like `.bash_aliases`.
+Add aliases in `.bashrc`, or in a config file sourced by `.bashrc` (like `.bash_aliases`).
 
 Paste into editor:
 (update script location if needed)
