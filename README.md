@@ -11,10 +11,10 @@ crontab -e
 Paste into editor:
 (update timings if needed)
 ````shell 
-# run update-factorio script every 5 min, between 0800-2355
+# run update-factorio script every 5 min, between 08:00-23:55
 */5 8-23 * * * ~/factorio/update-factorio.sh
 
-# clear update-factorio logs older than 7 days
+# clear update-factorio logs older than 7 days; runs daily at 00:00
 0 0 * * * find ~/factorio/logs -type f -mtime +7 -exec rm {} \;
 ````
 
