@@ -9,12 +9,8 @@ if [ -n "$1" ]; then
 fi
 
 mkdir --parents "$script_dir"/logs
-# redirect stdout/stderr to log file
-exec >>"$script_dir"/logs/update-factorio."$(date --iso-8601)".log 2>&1
-
-# execution timestamp
-printf "\n\n=========================\n"
-date --iso-8601=seconds
+# redirect stdout/stderr to log file, prefixed with timestamp
+exec > >(ts '%FT%T' >> "$script_dir"/logs/update-factorio."$(date --iso-8601)".log) 2>&1
 
 # pull latest docker image
 echo "Pulling the latest image version."
