@@ -13,6 +13,7 @@ mkdir --parents "$script_dir"/logs
 exec > >(ts '%FT%T' >> "$script_dir"/logs/update-factorio."$(date --iso-8601)".log) 2>&1
 
 # pull latest docker image
+echo "==============================================================="
 echo "Pulling the latest image version."
 docker compose --file "$script_dir"/docker-compose.yml pull --quiet
 new_image_id=$(docker inspect --format "{{.Id}}" factoriotools/factorio:stable)
