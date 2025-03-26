@@ -24,8 +24,8 @@ new_image_id=$(docker inspect --format "{{.Id}}" factoriotools/factorio:stable)
 # callable only after container_name is defined and the latest image has been pulled
 recreate_container() {
   echo "Recreating container $container_name with the latest image version."
-  docker compose --file "$script_dir"/docker-compose.yml down;
-  docker compose --file "$script_dir"/docker-compose.yml up --detach;
+  docker compose --file "$script_dir"/docker-compose.yml down
+  docker compose --file "$script_dir"/docker-compose.yml up --detach
   factorio_version=$(docker inspect --format '{{index .Config.Labels "factorio.version"}}' "$container_name")
   echo "Factorio version: $factorio_version"
 }
