@@ -17,7 +17,7 @@ Paste into editor:
 # clear update-factorio logs older than 7 days; runs daily at 00:00
 0 0 * * * find ~/factorio/logs -type f -mtime +7 -exec rm {} \;
 
-# remove dangling images
+# remove dangling imagesl runs daily at 04:00
 0 4 * * * docker image prune --force
 ````
 
