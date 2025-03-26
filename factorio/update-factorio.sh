@@ -46,7 +46,7 @@ container_image_id=$(docker inspect --format "{{.Image}}" "$container_name")
 
 # skip update if the server is not empty
 echo "Checking player count on the server before updating."
-players_online=$(docker exec factorio rcon /players o)
+players_online=$(docker exec "$container_name" rcon /players o)
 player_count=$(($(echo "$players_online" | wc --lines) - 1))
 
 echo "$players_online"
